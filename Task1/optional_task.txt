@@ -1,0 +1,32 @@
+An algorithm that asks the user to enter four numbers, sorts those numbers from smallest to largest and then prints the sorted numbers
+
+Initialize an empty array called numbers = []
+
+For the index i = 1 to 4
+
+Request from the user to input 4 numbers, set to inputNumber
+
+    print("Please enter 4 numbers") set to input
+
+    input numbers[i]
+
+Sorting the numbers
+
+For the index i = 1 to 3
+
+    Create another index j
+
+        For index j = 1 to 4 - i
+
+            if numbers[j] is greater than numbers[j + 1] then
+
+                swap numbers[j] and numbers[j + 1]
+
+print("Sorted Numbers:"
+    For the index i = 1 to 4
+        print(numbers[i])
+)
+
+    
+
+
