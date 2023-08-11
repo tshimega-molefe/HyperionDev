@@ -6,7 +6,7 @@ Repeatedly request from the user to input either a positive number, or zero
 
 If the input number is greater than the largestNumber variable
 
-    print "Enter a positive number or zero"
+    print("Enter a positive number or zero")
 
     set the largestNumber variable to the input number
 
@@ -14,7 +14,7 @@ If the number is equal to zero
 
     no longer show the user the initial prompt, and instead,
 
-    print "The largest of the number entered is:", largestNumber variable
+    print("The largest of the number entered is:", largestNumber)
 
 
 ------------------------------------------
@@ -22,5 +22,26 @@ If the number is equal to zero
 
 An algorithm that reads an arbitrary number of integers and then returns their arithmetic average:
 
+Set the sumOfNumbers to 0
 
+Set the countOfNumbers to 0
 
+Repeatedly request from the user to input an integer
+
+    print("Please enter an integer")
+
+    set the inputNumber to the input number by the user
+
+If the inputNumber is an integer
+
+        set the sumOfNumbers = to sumOfNumbers + inputNumber
+
+        iterate the countOfNumbers by 1; executing the formula, countOfNumbers = countOfNumbers + 1
+
+If the input number is not an integer
+
+    print("Oops that was incorrect, please enter an integer")
+
+Set the arithmeticAverage = to the sumOfNumbers divided by the countOfNumbers
+
+    print("The arithmetic average is: " + arithmeticAverage)
