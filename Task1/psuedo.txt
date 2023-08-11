@@ -34,7 +34,7 @@ Repeatedly request from the user to input an integer
 
 If the inputNumber is an integer
 
-        set the sumOfNumbers = to sumOfNumbers + inputNumber
+        set the sumOfNumbers = sumOfNumbers + inputNumber
 
         iterate the countOfNumbers by 1; executing the formula, countOfNumbers = countOfNumbers + 1
 
@@ -42,6 +42,35 @@ If the input number is not an integer
 
     print("Oops that was incorrect, please enter an integer")
 
-Set the arithmeticAverage = to the sumOfNumbers divided by the countOfNumbers
+Set the arithmeticAverage = sumOfNumbers divided(/) by countOfNumbers
 
-    print("The arithmetic average is: " + arithmeticAverage)
+    print("The arithmetic average is: " arithmeticAverage)
+
+
+------------------------------------------
+
+An algorithm that reads a grocery list and prints out the products (in alphabetical order) that are still left to buy
+
+Initialize an empty array called groceryList = []
+
+Repeatedly request from the user to input a string set to the variable groceryItem
+
+    print("Please enter a grocery list item or the text `Done` if you're done adding items to the list.")
+
+    set the groceryItem equal to = input string by the user ("Enter a grocery item (or 'done' to finish adding items): ")
+
+If groceryItem does not equal != "Done"
+
+        add groceryItem string to groceryList array
+
+If groceryItem == "Done"
+
+    sort the items within the grocery list array `groceryList[]` in alphabetical order 
+
+    print("Your grocery list is:" groceryList )
+
+print("Remaining items to buy:")
+
+    For each item in the groceryList[]
+
+    print("groceryItem)
