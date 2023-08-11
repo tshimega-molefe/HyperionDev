@@ -1,0 +1,57 @@
+An algorithm that requests a user to input their name and then stores their name in a variable called first_name. Subsequently, the algorithm should print out first_name along with the phrase "Hello World".
+
+Initialize the variable first_name to an empty string
+
+let first_name = ''
+
+Request for the user to enter their first name
+
+    print("Please enter your first name")
+
+store the the user input into the variable `first_name`
+
+    print(first_name, "Hello World")
+
+
+------------------------------------------
+
+
+An algorithm that asks a user to enter their age and then stores their age in a variable called age. Subsequently, the algorithm should print out "You're old enough" if the user's age is over or equal to 18, or print out "Almost there" if the age is equal to or over 16, but less than 18. Finally, the algorithm should print out "You're just too young" if the user is younger than (and not equal to) 16.
+
+
+Initialize the variable age to an empty string
+
+let age = ``
+
+Request for the user to enter their age
+
+    print("Please enter your age")
+
+Store the the user input into the variable `age`
+
+let age = userInput
+
+    if (age is greater than or equal to 18)
+
+        print("You're old enough")
+
+    if (age is greater than or equal to 16, but less than 18)
+
+        print("Almost there")
+
+    if (age less than 16)
+
+        print("You're just too young")
+
+    
+
+
+
+    
+
+
+
+
+
+
+
