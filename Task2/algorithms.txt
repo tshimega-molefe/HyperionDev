@@ -27,7 +27,7 @@ Request for the user to enter their age
 
     print("Please enter your age")
 
-Store the the user input into the variable `age`
+Store the user input into the variable `age`
 
 let age = userInput
 

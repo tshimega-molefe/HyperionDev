@@ -1,0 +1,47 @@
+The Fibonacci sequence is sequence of numbers beginning with 0 and 1, in which every number after the first two can be found by adding the two numbers before it.  For example, the first 10 numbers in the Fibonacci sequence are as follows:
+
+0, 1, 2, 3, 5, 8, 13, 21, 34, ...
+
+An algorithm that asks the user for a number and stores that number in a variable called n. Then the algorithm should calculate and print out the first n numbers in the Fibonacci sequence.
+
+Initialize the variable n to null 
+
+let n = null
+
+Request for the user to enter a number
+
+    print("Please enter a number")
+
+Store the user input into the variable `n`
+
+Pass the variable n into a formulae that returns the Fibonacci sequence, where n is the first n numbers in the Fibonacci sequence
+
+For function Fibonacci(n)
+
+    if (n is less than or equal to zero)
+
+        print('0')
+
+    Initialize an empty list Fibonacci_Sequence
+
+    Initialize variables a = 0, and b = 1
+
+        For index i to n
+
+            Add variable `a` into the Fibonacci_Sequence list
+
+            let variable j = a
+
+            a = b
+
+            b = j + b
+        
+    return the value of Fibonacci(n) and store it as Fibonacci_Sequence list
+
+
+Set the variable Fibonacci_Numbers = Fibonacci_Sequence
+
+print("The first n numbers in the Fibonacci sequence is:", Fibonacci_Sequence)
+
+
+
