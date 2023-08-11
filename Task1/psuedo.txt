@@ -17,7 +17,9 @@ If the number is equal to zero
     print("The largest of the number entered is:", largestNumber)
 
 
+
 ------------------------------------------
+
 
 
 An algorithm that reads an arbitrary number of integers and then returns their arithmetic average:
@@ -47,9 +49,13 @@ Set the arithmeticAverage = sumOfNumbers divided(/) by countOfNumbers
     print("The arithmetic average is: " arithmeticAverage)
 
 
+
 ------------------------------------------
 
+
+
 An algorithm that reads a grocery list and prints out the products (in alphabetical order) that are still left to buy
+
 
 Initialize an empty array called groceryList = []
 
@@ -74,3 +80,44 @@ print("Remaining items to buy:")
     For each item in the groceryList[]
 
     print("groceryItem)
+
+
+------------------------------------------
+
+
+An algorithm for the flowchart:
+
+Initialize two variables
+
+X = null
+
+y = null
+
+Request from the user to input a number and store this value as userInput:
+
+    print("Enter a number for X")
+
+    set the value of X = userInput
+    
+    print("Enter a number for Y")
+
+    set the value of Y = userInput
+
+Calculate the following forumulae:
+
+S = X + Y
+
+A = (S / 2)
+
+P = X * Y
+
+Print the following:
+
+    print("SumOfS:" S)
+
+    print("AverageOfA:" A)
+    
+    print("ProductOfP:" P)
+
+
+
