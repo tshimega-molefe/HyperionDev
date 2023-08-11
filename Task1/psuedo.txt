@@ -1,28 +1,26 @@
-An algorithm that asks a user to enter a positve number repeatedly until the user enters a zero value, then determines and outputs the largest of the numbers that were input:
+An algorithm that asks a user to enter a positive number repeatedly until the user enters a zero value, then determines and outputs the largest of the numbers that were input:
 
 Set the largestNumber variable to zero
 
-Initialize an empty array of name enteredNumbers
+Repeatedly request from the user to input either a positive number, or zero 
 
-Request a positve number, or zero from the user
-
-If the number is greater than zero
+If the input number is greater than the largestNumber variable
 
     print "Enter a positive number or zero"
 
-    append the number entered by the user into the enteredNumbers array
+    set the largestNumber variable to the input number
 
 If the number is equal to zero
 
-    search for the max value within the enteredNumbers array
+    no longer show the user the initial prompt, and instead,
 
-    mutate the value of the largestNumber value to equal the max value of the enteredNumbers array
-
-    print "largestNumber"
+    print "The largest of the number entered is:", largestNumber variable
 
 
 ------------------------------------------
 
 
 An algorithm that reads an arbitrary number of integers and then returns their arithmetic average:
+
+
 
