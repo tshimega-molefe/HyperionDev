@@ -24,15 +24,21 @@ if sunny == "yes":
 if temp > 20:
     greater_than_20 = True
 
-if is_Sunny and is_weekend and greater_than_20:
-    print(
-        f"Based on the current weather conditions, you should {short_sleeve}, {shorts}, and {cap}"
-    )
-elif not is_Sunny and not is_weekend and not greater_than_20:
-    print(
-        f"Based on the current weather conditions, you should {long_sleeve}, {jeans}, and {raincoat}"
-    )
+outfit = ""
+
+if greater_than_20:
+    outfit += short_sleeve
 else:
-    print(
-        f"Based on the current weather conditions, you should {long_sleeve}, {jeans}, and {raincoat}"
-    )
+    outfit += long_sleeve
+
+if is_weekend:
+    outfit += ", " + shorts
+else:
+    outfit += ", " + jeans
+
+if is_Sunny:
+    outfit += ", " + cap
+else:
+    outfit += ", " + raincoat
+
+print(f"Based on the current weather conditions, you should {outfit}.")
