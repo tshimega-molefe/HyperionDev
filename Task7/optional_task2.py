@@ -41,4 +41,6 @@ if is_Sunny:
 else:
     outfit += ", " + raincoat
 
+# Output/Display to User
+
 print(f"Based on the current weather conditions, you should {outfit}.")
