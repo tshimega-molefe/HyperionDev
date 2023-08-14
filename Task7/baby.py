@@ -3,8 +3,8 @@
 # If entered age_year is less than or equal to 2005, or less than 2004, then print the message to the user that they're old enough.
 yob = int(input("Which year were you born: "))
 
-entry_permitted = False
+entry_permitted == False
 
 if yob <= 2005:
-    entry_permitted = True
+    entry_permitted == True
     print("Congrats you are old enough.")
