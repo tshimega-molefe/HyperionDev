@@ -9,7 +9,9 @@ num1 = int(input("Enter your first number: "))
 num2 = int(input("Enter your second number: "))
 num3 = int(input("Enter your third number: "))
 
-print(f"You entered {num1} as your first number, {num2} as your second, and {num3} as your third.")
+print(
+    f"You entered {num1} as your first number, {num2} as your second, and {num3} as your third."
+)
 
 total_sum = num1 + num2 + num3
 
@@ -18,7 +20,10 @@ difference = num1 - num3
 multiply = num3 * num1
 
 print(f"The sum of the numbers you entered is {total_sum}")
-print(f"The differnece between the first number, and the third number you entered is {difference}")
+print(
+    f"The difference between the first number and the third number you entered is {difference}"
+)
 print(f"The product of your first and third number is {multiply}")
 
-
+division_result = total_sum / num3
+print(f"The result of dividing the total sum by the third number is: {division_result}")
