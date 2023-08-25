@@ -2,17 +2,17 @@
 
 total_sum = 0
 count = 0
-stop_while = 0
+user_input = 0  # Initialize user_input with a non-terminating value
 
-while stop_while != 23:
+while user_input != -1:
     user_input = int(input("Please enter an integer: "))
-    stop_while = user_input
 
-    total_sum += user_input
-    count += 1
+    if user_input != -1:  # Exclude -1 from calculations
+        total_sum += user_input
+        count += 1
 
 if count > 0:
     average = total_sum / count
-    print(f"Average of entered numbers is equal to {average}.")
+    print(f"Average of entered numbers is equal to {average:.2f}.")
 else:
     print("No numbers were entered")

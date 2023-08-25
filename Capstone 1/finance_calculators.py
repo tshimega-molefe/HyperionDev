@@ -44,16 +44,19 @@ if calculator == "investment":
 elif calculator == "bond":
     try:
         present_value = float(input("Enter the present value of the house: R"))
-        rate = float(input("Enter the interest rate (Do not enter the % symbol): "))
+        annual_rate = float(
+            input("Enter the annual interest rate (Do not enter the % symbol): ")
+        )
         months = int(input("Enter the number of months you plan to repay the bond: "))
     except ValueError:
         print("Invalid input. Please enter valid numeric values.")
         exit(1)  # Try failed, catch returns error
 
+    monthly_rate = annual_rate / 12 / 100
     repayment = round(
-        ((rate / 12) * present_value) / (1 - math.pow((1 + (rate / 12)), -months)), 2
+        (monthly_rate * present_value) / (1 - math.pow((1 + monthly_rate), -months)), 2
     )
-    total_cost = round((repayment + present_value), 2)
+    total_cost = round((repayment * months), 2)
 
     print(f"The total monthly repayment on your home loan will be R{repayment}")
     print(
