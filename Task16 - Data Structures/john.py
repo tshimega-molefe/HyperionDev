@@ -9,6 +9,7 @@ correct_name = "John".lower()  # ignore case sensitivty
 
 while user_input != correct_name:
     user_input = str(input("Enter your name: ")).lower()
-    incorrect_names.append(user_input)
+    if user_input != correct_name:
+        incorrect_names.append(user_input)
     print(incorrect_names)
-print("Success, you're the right person John. World ending protocol access granted :)")
+print("Success, you're the right person John. World ending protocol access granted!)")
