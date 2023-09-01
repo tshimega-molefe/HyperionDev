@@ -2,6 +2,8 @@ from datetime import datetime
 
 # Initialize an empty dictionary to store username data
 users = {}
+
+# Set the initial number of users, and tasks to 0
 total_users = 0
 total_tasks = 0
 
@@ -21,9 +23,27 @@ e - exit
 : """
     ).lower()
 
+    #
     if menu == "a":
         username = input("Enter your username: ")
         password = input("Enter your password: ")
+
+        if not users:
+            # If the users dictionary is empty, inform the user of this, and tell them to enter admin details and allow admin registration
+
+            if username == "admin" and password == "admin":
+                print("Admin registered successfully.")
+                users[username] = password
+                with open("user.txt", "a") as file:
+                    file.write(f"{username},{password}\n")
+                total_users += 1
+                continue
+            else:
+                print(
+                    "Hi! There are currently no users in the database, please register as an admin\n Use the following username and password.\n username: admin\n password: admin"
+                )
+                print("Invalid username or password.")
+                continue
 
         if username not in users or users[username] != password:
             print("Invalid username or password.")
