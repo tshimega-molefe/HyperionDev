@@ -1,245 +1,128 @@
 from datetime import datetime
 
-# Initialize an empty dictionary to store username data
-users = {}
 
-# Set the initial number of users, and tasks to 0
-total_users = 0
-total_tasks = 0
+def read_users_from_file(filename):
+    users = {}
+    is_file_empty = True
 
-# Read user data from a file and populate the users dictionary
-with open("user.txt", "r") as file:
-    for line in file:
-        username, password = line.strip().split(",")
-        users[username] = password
+    with open(filename, "r") as file:
+        for line in file:
+            is_file_empty = False
+            username, password = line.strip().split(", ")
+            users[username] = password
 
-# Infinite loop to display the main menu
-while True:
-    # Display the menu options and get user input
-    menu = input(
-        """Select one of the following options:
-a - login
-e - exit
-: """
-    ).lower()
+    # If the file is empty or admin is not registered, add admin to the file
+    if is_file_empty or "admin" not in users:
+        users["admin"] = "admin"
+        with open(filename, "a") as file:
+            file.write(f"admin, admin\n")
 
-    #
-    if menu == "a":
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
+    return users
 
-        if not users:
-            # If the users dictionary is empty, inform the user of this, and tell them to enter admin details and allow admin registration
 
-            if username == "admin" and password == "admin":
-                print("Admin registered successfully.")
-                users[username] = password
-                with open("user.txt", "a") as file:
-                    file.write(f"{username},{password}\n")
-                total_users += 1
-                continue
-            else:
+def display_menu(options):
+    print("Select one of the following options:")
+    print("\n".join(options))
+    return input(": ").lower()
+
+
+def process_task_input(username, users):
+    assigned_to = (
+        username
+        if username == "admin"
+        else input("Enter the username of the person the task is assigned to: ")
+    )
+    if assigned_to not in users:
+        print("User not found. Task cannot be added.")
+        return
+
+    title = input("Enter the title of the task: ")
+    description = input("Enter the description of the task: ")
+    due_date = input("Enter the due date of the task (YYYY-MM-DD): ")
+    current_date = datetime.now().strftime("%Y-%m-%d")
+
+    with open("tasks.txt", "a") as file:
+        file.write(
+            f"{assigned_to}, {title}, {description}, {due_date}, {current_date}, No\n"
+        )
+    print("Task added successfully.")
+
+
+def display_tasks(filename, username=None):
+    tasks_found = False
+    with open(filename, "r") as file:
+        for line in file:
+            (
+                assigned_to,
+                title,
+                description,
+                due_date,
+                current_date,
+                status,
+            ) = line.strip().split(", ")
+            if username is None or assigned_to == username:
+                tasks_found = True
                 print(
-                    "Hi! There are currently no users in the database, please register as an admin\n Use the following username and password.\n username: admin\n password: admin"
+                    f"Assigned to: {assigned_to}\nTitle: {title}\nDescription: {description}\nDue Date: {due_date}\nStatus: {status}\n"
                 )
+
+    if not tasks_found:
+        print(f"No tasks found for {username if username else 'any user'}.")
+
+
+def main():
+    users = read_users_from_file("user.txt")
+    logged_in_user = None
+
+    while True:
+        menu = display_menu(["a - login", "e - exit"])
+
+        if menu == "a":
+            if logged_in_user:
+                print(f"Welcome back, {logged_in_user}!")
+            else:
+                username = input("Enter your username: ")
+                password = input("Enter your password: ")
+
+            if username not in users or users[username] != password:
                 print("Invalid username or password.")
                 continue
 
-        if username not in users or users[username] != password:
-            print("Invalid username or password.")
-            continue
+            logged_in_user = username
 
-        if username == "admin":
             while True:
-                admin_menu = input(
-                    """Select one of the following options:
-r - register a user
-a - add task
-va - view all tasks
-vm - view my tasks
-s - view statistics
-e - exit
-: """
-                ).lower()
+                options = [
+                    "a - add task",
+                    "va - view all tasks",
+                    "vm - view my tasks",
+                    "e - exit",
+                ]
+                if logged_in_user == "admin":
+                    options.extend(["r - register a user", "s - view statistics"])
 
-                if admin_menu == "r":
-                    new_username = input("Enter a new username: ")
-                    if new_username in users:
-                        print("Username already exists.")
-                        continue
-
-                    while True:
-                        new_password = input("Enter a new password: ")
-                        confirm_password = input("Confirm the password: ")
-
-                        if new_password != confirm_password:
-                            print("Passwords do not match. Please try again.")
-                        else:
-                            break
-
-                    users[new_username] = new_password
-                    with open("user.txt", "a") as file:
-                        file.write(f"{new_username},{new_password}\n")
-                    total_users += 1
-                    print("User registered successfully.")
-
-                elif admin_menu == "a":
-                    assigned_to = input(
-                        "Enter the username of the person the task is assigned to: "
-                    )
-
-                    if assigned_to not in users:
-                        print("User not found. Task cannot be added.")
-                        continue
-
-                    title = input("Enter the title of the task: ")
-                    description = input("Enter the description of the task: ")
-                    due_date = input("Enter the due date of the task: ")
-                    current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-                    with open("tasks.txt", "a") as file:
-                        file.write(
-                            f"{assigned_to}, {title}, {description}, {due_date}, {current_date}, No\n"
-                        )
-                    total_tasks += 1
-                    print("Task added successfully.")
-
-                # View all tasks option
-                elif admin_menu == "va":
-                    with open("tasks.txt", "r") as file:
-                        for line in file:
-                            (
-                                assigned_to,
-                                title,
-                                description,
-                                due_date,
-                                current_date,
-                                status,
-                            ) = line.strip().split(", ")
-                            print(
-                                f"Assigned to: {assigned_to}\nTitle: {title}\nDescription: {description}\nDue Date: {due_date}\nStatus: {status}\n"
-                            )
-
-                # View specific username tasks option
-                elif admin_menu == "vm":
-                    logged_in_user = input(
-                        "Enter the username of the person whose tasks you want to find: "
-                    )
-
-                    if logged_in_user not in users:
-                        print("User does not exist.")
-                        continue
-
-                    tasks_found = False
-                    with open("tasks.txt", "r") as file:
-                        for line in file:
-                            (
-                                assigned_to,
-                                title,
-                                description,
-                                due_date,
-                                current_date,
-                                status,
-                            ) = line.strip().split(", ")
-                            if assigned_to == logged_in_user:
-                                tasks_found = True
-                                print(
-                                    f"Assigned to: {assigned_to}\nTitle: {title}\nDescription: {description}\nDue Date: {due_date}\nStatus: {status}\n"
-                                )
-
-                    if not tasks_found:
-                        print("No tasks found for this user.")
-
-                elif admin_menu == "s":
-                    with open("user.txt", "r") as user_file:
-                        total_users = len(user_file.readlines())
-
-                    with open("tasks.txt", "r") as tasks_file:
-                        total_tasks = len(tasks_file.readlines())
-
-                    print(f"Total Users: {total_users}\nTotal Tasks: {total_tasks}\n")
-
-                elif admin_menu == "e":
-                    print("Goodbye!!!")
-                    exit()
-
-                else:
-                    print("You have entered an invalid input. Please try again")
-        else:
-            while True:
-                user_menu = input(
-                    """Select one of the following options:
-a - add task
-va - view all tasks
-vm - view my tasks
-e - exit
-: """
-                ).lower()
+                user_menu = display_menu(options)
 
                 if user_menu == "a":
-                    assigned_to = username
-
-                    if assigned_to not in users:
-                        print("User not found. Task cannot be added.")
-                        continue
-
-                    title = input("Enter the title of the task: ")
-                    description = input("Enter the description of the task: ")
-                    due_date = input("Enter the due date of the task: ")
-                    current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-                    with open("tasks.txt", "a") as file:
-                        file.write(
-                            f"{assigned_to}, {title}, {description}, {due_date}, {current_date}, No\n"
-                        )
-                    print("Task added successfully.")
-
+                    process_task_input(logged_in_user, users)
                 elif user_menu == "va":
-                    with open("tasks.txt", "r") as file:
-                        for line in file:
-                            (
-                                assigned_to,
-                                title,
-                                description,
-                                due_date,
-                                current_date,
-                                status,
-                            ) = line.strip().split(", ")
-                            print(
-                                f"Assigned to: {assigned_to}\nTitle: {title}\nDescription: {description}\nDue Date: {due_date}\nStatus: {status}\n"
-                            )
-
+                    display_tasks("tasks.txt")
                 elif user_menu == "vm":
-                    tasks_found = False
-                    with open("tasks.txt", "r") as file:
-                        for line in file:
-                            (
-                                assigned_to,
-                                title,
-                                description,
-                                due_date,
-                                current_date,
-                                status,
-                            ) = line.strip().split(", ")
-                            if assigned_to == username:
-                                tasks_found = True
-                                print(
-                                    f"Assigned to: {assigned_to}\nTitle: {title}\nDescription: {description}\nDue Date: {due_date}\nStatus: {status}\n"
-                                )
-
-                    if not tasks_found:
-                        print("No tasks found for this user.")
-
+                    display_tasks("tasks.txt", username=logged_in_user)
+                elif user_menu == "r":
+                    print("Registering a user (not implemented).")
+                elif user_menu == "s":
+                    print("Showing statistics (not implemented).")
                 elif user_menu == "e":
                     print("Goodbye!!!")
                     exit()
-
                 else:
-                    print("You have entered an invalid input. Please try again")
+                    print("You have entered an invalid input. Please try again.")
+        elif menu == "e":
+            print("Goodbye!!!")
+            exit()
+        else:
+            print("You have entered an invalid input. Please try again.")
 
-    elif menu == "e":
-        print("Goodbye!!!")
-        exit()
 
-    else:
-        print("You have entered an invalid input. Please try again")
+if __name__ == "__main__":
+    main()
