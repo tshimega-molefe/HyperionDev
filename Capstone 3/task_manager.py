@@ -138,7 +138,6 @@ def generate_reports():
             file.write(
                 f"Percentage of total tasks: {(user_tasks / total_tasks) * 100:.2f}%\n"
             )
-            # Additional percentages related to the user can be calculated here
 
 
 def edit_task(filename, username):
