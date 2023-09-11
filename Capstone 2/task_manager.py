@@ -48,6 +48,43 @@ def process_task_input(username, users):
     print("Task added successfully.")
 
 
+def register_users(filename, users):
+    new_username = input("Enter the username for the new user: ")
+    if new_username in users:
+        print("This username already exists.")
+        return
+
+    new_password = input("Enter the password for the new user: ")
+    confirm_password = input("Confirm the password: ")
+
+    if new_password != confirm_password:
+        print("Passwords do not match.")
+        return
+
+    with open(filename, "a") as file:
+        file.write(f"{new_username}, {new_password}\n")
+
+    users[new_username] = new_password
+    print(f"User {new_username} registered successfully.")
+
+
+def show_statistics(task_filename, users):
+    total_tasks = 0
+    tasks_per_user = {}
+
+    with open(task_filename, "r") as file:
+        for line in file:
+            total_tasks += 1
+            assigned_to, *_ = line.strip().split(", ")
+            tasks_per_user[assigned_to] = tasks_per_user.get(assigned_to, 0) + 1
+
+    print(f"Total users: {len(users)}")
+    print(f"Total tasks: {total_tasks}")
+
+    for user, task_count in tasks_per_user.items():
+        print(f"{user} has {task_count} tasks.")
+
+
 def display_tasks(filename, username=None):
     tasks_found = False
     with open(filename, "r") as file:
@@ -109,9 +146,9 @@ def main():
                 elif user_menu == "vm":
                     display_tasks("tasks.txt", username=logged_in_user)
                 elif user_menu == "r":
-                    print("Registering a user (not implemented).")
+                    register_users("user.txt", users)
                 elif user_menu == "s":
-                    print("Showing statistics (not implemented).")
+                    show_statistics("tasks.txt", users)
                 elif user_menu == "e":
                     print("Goodbye!!!")
                     exit()
