@@ -46,6 +46,13 @@ def list_emails():
     # Create a function which prints the email’s subject_line, along with a corresponding number.
 
 
+def list_unread_emails():
+    print("\nList of Unread Emails:")
+    for i, email in enumerate(inbox):
+        if not email.has_been_read:
+            print(f"{i + 1}. {email.subject_line} (Unread)")
+
+
 def read_email(index):
     email = inbox[index]
     print(f"\nFrom: {email.email_address}")
@@ -87,7 +94,7 @@ while True:
                 print("Invalid selection.")
 
         elif user_choice == 2:
-            list_emails()
+            list_unread_emails()
 
         elif user_choice == 3:
             print("Quitting application.")

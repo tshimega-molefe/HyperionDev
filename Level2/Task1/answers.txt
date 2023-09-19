@@ -1,0 +1,64 @@
+A system to control anti-lock braking in a car
+
+Recommended Model: V-Model (Validation and Verification Model)
+
+Reason: Given that this is a safety-critical system, each stage of development would require corresponding testing and validation. Component reuse might be minimal, restricted to highly-certified components.
+
+==========================================================
+
+A virtual reality system to support software maintenance
+
+Recommended Model: Spiral Model
+
+Reason: The system likely involves complex, evolving requirements. The Spiral Model would allow for component analysis, risk assessment, and iterative development. Reusable components such as VR frameworks and maintenance tools could be integrated at each spiral.
+
+==========================================================
+
+A university accounting system that replaces an existing system
+
+Recommended Model: Incremental Development Model
+
+Reason: Replacing an existing system implies that there's a baseline of features that are well-understood. Components like accounting modules or database connectors could be incrementally added and tested, allowing for a smoother transition.
+
+==========================================================
+
+An interactive travel planning system that helps users plan trips with the lowest environmental impact
+
+Recommended Model: Agile Model
+
+Reason: The Agile model would accommodate the evolving requirements and uncertainties in environmental data and user preferences. Reusable components like map APIs and carbon calculators could be integrated in various sprints.
+These models are suggested considering the potential for component reuse in CBSE, the nature of the systems, and the need for flexibility or rigor in the development process.
+
+==========================================================
+
+Incremental Development for Business Software
+
+Incremental development is often the most effective approach for business software for several reasons:
+
+Early ROI: Partial solutions can be deployed earlier, providing a quicker return on investment.
+Flexibility: The project can easily adapt to changes in business requirements.
+Risk Mitigation: Focusing on smaller, manageable pieces allows for easier debugging and testing, reducing the overall risk.
+User Feedback: Early releases provide valuable feedback for future development cycles.
+
+==========================================================
+
+In the reuse-oriented software engineering process, the two separate requirements engineering steps serve distinct but complementary purposes. Here's why both are necessary:
+
+Initial Requirements Specification: The initial step aims to capture what the system is intended to do without concern for existing components that may or may not be available. This is the ideal set of requirements, outlining the optimal functionality and behavior of the system.
+
+Requirements Modification: After component analysis, this step adapts the initial requirements to the practical constraints and opportunities presented by available reusable components. Some requirements might be altered, removed, or new ones might be added based on what can realistically be achieved with the identified components.
+
+Key Reasons for Two Separate Steps:
+Feasibility Check: The initial requirements provide a basis for the component analysis. After the analysis, a more pragmatic set of requirements can be defined, which ensures that the project is feasible given existing resources.
+
+Optimal Utilization of Components: If you start with a flexible set of requirements, the component analysis can reveal opportunities for reusing high-quality, well-tested components, possibly even enhancing the system's capabilities.
+
+Risk Mitigation: By revisiting requirements after component analysis, you can identify potential risks related to component integration, compatibility, and functionality. This allows for early corrective actions.
+
+Alignment with Business Goals: The initial requirements are often aligned with business or user needs. The modified requirements, however, align with technical and practical feasibility, ensuring that the final system is both useful and achievable.
+
+Cost and Time Efficiency: Modifying requirements post-component analysis could potentially save development time and costs by aligning the system's needs with existing, proven solutions.
+
+Quality Assurance: Reusable components are often well-tested, and aligning the requirements to use such components can enhance the quality and reliability of the final system.
+
+In summary, having two separate requirements engineering steps allows the development process to be both idealistic and realistic, balancing what is desired with what is practical. 
