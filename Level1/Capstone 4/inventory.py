@@ -46,10 +46,10 @@ def read_shoes_data():
 def update_inventory():
     try:
         with open("inventory.txt", "w") as f:
-            f.write("Country,Code,Product,Cost,Quantity\n")
+            f.write("Country,Code,Product,Cost,Quantity\\n")
             for shoe in shoe_list:
                 f.write(
-                    f"{shoe.country},{shoe.code},{shoe.product},{shoe.cost},{shoe.quantity}\n"
+                    f"{shoe.country},{shoe.code},{shoe.product},{shoe.cost},{shoe.quantity}\\n"
                 )
     except Exception as e:
         print(f"Error: {e}")
@@ -59,21 +59,18 @@ def capture_shoes():
     country = input("Country: ")
     code = input("Code: ")
     product = input("Product: ")
-
     while True:
         try:
             cost = float(input("Cost: "))
             break
         except ValueError:
             print("Invalid input. Please enter a valid float for cost.")
-
     while True:
         try:
             quantity = int(input("Quantity: "))
             break
         except ValueError:
             print("Invalid input. Please enter a valid integer for quantity.")
-
     shoe = Shoe(country, code, product, cost, quantity)
     shoe_list.append(shoe)
     update_inventory()
@@ -86,25 +83,43 @@ def view_all():
 
 def re_stock():
     min_shoe = min(shoe_list, key=lambda x: x.get_quantity())
+    print(f"Details of the shoe with the lowest quantity:")
+    print(
+        tabulate(
+            [
+                [
+                    min_shoe.country,
+                    min_shoe.code,
+                    min_shoe.product,
+                    min_shoe.cost,
+                    min_shoe.quantity,
+                ]
+            ],
+            headers=["Country", "Code", "Product", "Cost", "Quantity"],
+        )
+    )
     restock = input(f"Do you want to restock {min_shoe.product} (y/n)? ")
-
-    if restock.lower() == "y":
-        while True:
-            try:
-                new_quantity = int(input("Enter new quantity: "))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a valid integer for new quantity.")
-
-        min_shoe.quantity += new_quantity
-        update_inventory()
+    while True:
+        try:
+            new_quantity = int(input("Enter new quantity: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid integer for new quantity.")
+    min_shoe.quantity += new_quantity
+    update_inventory()
 
 
 def search_shoe():
     code = input("Enter shoe code: ")
     for shoe in shoe_list:
         if shoe.code == code:
-            print(shoe)
+            print("Found shoe details:")
+            print(
+                tabulate(
+                    [[shoe.country, shoe.code, shoe.product, shoe.cost, shoe.quantity]],
+                    headers=["Country", "Code", "Product", "Cost", "Quantity"],
+                )
+            )
             return
 
 
@@ -121,15 +136,17 @@ def highest_qty():
     )
 
 
+# Auto-load the shoes data into shoe_list.
+read_shoes_data()
+
 # ==========Main Menu=============
 while True:
     print(
-        "\n1. Read Shoes Data\n2. Capture Shoes\n3. View All\n4. Re-Stock\n5. Search Shoe\n6. Value per Item\n7. Highest Quantity\n8. Exit"
+        "\\n2. Capture Shoes\\n3. View All\\n4. Re-Stock\\n5. Search Shoe\\n"
+        "6. Value per Item\\n7. Highest Quantity\\n8. Exit"
     )
     choice = input("Choose an option: ")
-    if choice == "1":
-        read_shoes_data()
-    elif choice == "2":
+    if choice == "2":
         capture_shoes()
     elif choice == "3":
         view_all()
@@ -143,3 +160,10 @@ while True:
         highest_qty()
     elif choice == "8":
         break
+
+# Save the updated code to a text file.
+file_path = "/mnt/data/updated_inventory_code.py"
+with open(file_path, "w") as f:
+    f.write(updated_code)
+
+file_path
