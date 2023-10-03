@@ -1,7 +1,4 @@
-from tabulate import tabulate
-
-
-# ========The beginning of the class==========
+# Defining the Shoe class with required methods
 class Shoe:
     def __init__(self, country, code, product, cost, quantity):
         self.country = country
@@ -17,153 +14,119 @@ class Shoe:
         return self.quantity
 
     def __str__(self):
-        return (
-            f"{self.country}, {self.code}, {self.product}, {self.cost}, {self.quantity}"
-        )
+        return f"Country: {self.country}, Code: {self.code}, Product: {self.product}, Cost: {self.cost}, Quantity: {self.quantity}"
 
 
-# =============Shoe list===========
+# List to store shoe objects
 shoe_list = []
 
 
-# ==========Functions outside the class==============
-
-
+# Function to read shoe data from a text file and populate the shoe_list
 def read_shoes_data():
     try:
-        with open("inventory.txt", "r") as f:
-            next(f)
-            for line in f:
+        with open("inventory.txt", "r") as file:
+            next(file)  # Skip the first line (header)
+            for line in file:
                 country, code, product, cost, quantity = line.strip().split(",")
                 shoe = Shoe(country, code, product, float(cost), int(quantity))
                 shoe_list.append(shoe)
-        print("Data successfully read into shoe_list.")
-        view_all()
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"An error occurred: {e}")
 
 
-def update_inventory():
+def update_inventory_file():
     try:
-        with open("inventory.txt", "w") as f:
-            f.write("Country,Code,Product,Cost,Quantity\\n")
+        with open("inventory.txt", "w") as file:
+            file.write("Country,Code,Product,Cost,Quantity\n")  # Writing the header
             for shoe in shoe_list:
-                f.write(
-                    f"{shoe.country},{shoe.code},{shoe.product},{shoe.cost},{shoe.quantity}\\n"
+                file.write(
+                    f"{shoe.country},{shoe.code},{shoe.product},{shoe.cost},{shoe.quantity}\n"
                 )
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"An error occurred while updating the file: {e}")
 
 
-def capture_shoes():
-    country = input("Country: ")
-    code = input("Code: ")
-    product = input("Product: ")
-    while True:
-        try:
-            cost = float(input("Cost: "))
-            break
-        except ValueError:
-            print("Invalid input. Please enter a valid float for cost.")
-    while True:
-        try:
-            quantity = int(input("Quantity: "))
-            break
-        except ValueError:
-            print("Invalid input. Please enter a valid integer for quantity.")
-    shoe = Shoe(country, code, product, cost, quantity)
-    shoe_list.append(shoe)
-    update_inventory()
-
-
-def view_all():
-    table = [str(shoe).split(", ") for shoe in shoe_list]
-    print(tabulate(table, headers=["Country", "Code", "Product", "Cost", "Quantity"]))
-
-
+# Function to restock shoes with the lowest quantity
 def re_stock():
     min_shoe = min(shoe_list, key=lambda x: x.get_quantity())
-    print(f"Details of the shoe with the lowest quantity:")
-    print(
-        tabulate(
-            [
-                [
-                    min_shoe.country,
-                    min_shoe.code,
-                    min_shoe.product,
-                    min_shoe.cost,
-                    min_shoe.quantity,
-                ]
-            ],
-            headers=["Country", "Code", "Product", "Cost", "Quantity"],
-        )
-    )
-    restock = input(f"Do you want to restock {min_shoe.product} (y/n)? ")
-    while True:
-        try:
-            new_quantity = int(input("Enter new quantity: "))
-            break
-        except ValueError:
-            print("Invalid input. Please enter a valid integer for new quantity.")
-    min_shoe.quantity += new_quantity
-    update_inventory()
+    print(f"Lowest quantity shoe: {min_shoe}")
+    restock_qty = int(input("Enter the quantity to restock: "))
+    min_shoe.quantity += restock_qty
+    update_inventory_file()  # Update the inventory file
 
 
-def search_shoe():
-    code = input("Enter shoe code: ")
+# Function to view all shoes
+def view_all():
+    for shoe in shoe_list:
+        print(shoe)
+
+
+# Function to capture new shoe data
+def capture_shoes():
+    country = input("Enter the country: ")
+    code = input("Enter the code: ")
+    product = input("Enter the product name: ")
+    cost = float(input("Enter the cost: "))
+    quantity = int(input("Enter the quantity: "))
+    new_shoe = Shoe(country, code, product, cost, quantity)
+    shoe_list.append(new_shoe)
+    update_inventory_file()
+
+
+# Function to search for a shoe by code
+def search_shoe(code):
     for shoe in shoe_list:
         if shoe.code == code:
-            print("Found shoe details:")
-            print(
-                tabulate(
-                    [[shoe.country, shoe.code, shoe.product, shoe.cost, shoe.quantity]],
-                    headers=["Country", "Code", "Product", "Cost", "Quantity"],
-                )
-            )
-            return
+            return shoe
+    return None
 
 
+# Function to calculate the total value for each item
 def value_per_item():
     for shoe in shoe_list:
         value = shoe.get_cost() * shoe.get_quantity()
-        print(f"{shoe.product}: {value}")
+        print(f"Total value of {shoe.product}: {value}")
 
 
+# Function to find the shoe with the highest quantity
 def highest_qty():
     max_shoe = max(shoe_list, key=lambda x: x.get_quantity())
-    print(
-        f"{max_shoe.product} is for sale with highest quantity: {max_shoe.get_quantity()}"
-    )
+    print(f"Highest quantity shoe: {max_shoe}")
 
 
-# Auto-load the shoes data into shoe_list.
-read_shoes_data()
-
-# ==========Main Menu=============
+# Main Menu
 while True:
-    print(
-        "\\n2. Capture Shoes\\n3. View All\\n4. Re-Stock\\n5. Search Shoe\\n"
-        "6. Value per Item\\n7. Highest Quantity\\n8. Exit"
-    )
-    choice = input("Choose an option: ")
-    if choice == "2":
+    print("1. Read Shoes Data")
+    print("2. Capture Shoes")
+    print("3. View All")
+    print("4. Restock")
+    print("5. Search by Code")
+    print("6. Calculate Value Per Item")
+    print("7. Find Highest Quantity Shoe")
+    print("8. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        read_shoes_data()
+    elif choice == 2:
         capture_shoes()
-    elif choice == "3":
+    elif choice == 3:
         view_all()
-    elif choice == "4":
+    elif choice == 4:
         re_stock()
-    elif choice == "5":
-        search_shoe()
-    elif choice == "6":
+    elif choice == 5:
+        code = input("Enter the shoe code to search: ")
+        shoe = search_shoe(code)
+        if shoe:
+            print(shoe)
+        else:
+            print("Shoe not found.")
+    elif choice == 6:
         value_per_item()
-    elif choice == "7":
+    elif choice == 7:
         highest_qty()
-    elif choice == "8":
+    elif choice == 8:
         break
-
-# Save the updated code to a text file.
-file_path = "/mnt/data/updated_inventory_code.py"
-with open(file_path, "w") as f:
-    f.write(updated_code)
-
-file_path
+    else:
+        print("Invalid choice. Please try again.")
