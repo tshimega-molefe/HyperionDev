@@ -94,39 +94,38 @@ def highest_qty():
     print(f"Highest quantity shoe: {max_shoe}")
 
 
+read_shoes_data()
+
 # Main Menu
 while True:
-    print("1. Read Shoes Data")
-    print("2. Capture Shoes")
-    print("3. View All")
-    print("4. Restock")
-    print("5. Search by Code")
-    print("6. Calculate Value Per Item")
-    print("7. Find Highest Quantity Shoe")
-    print("8. Exit")
+    print("1. Capture Shoes")
+    print("2. View All")
+    print("3. Restock")
+    print("4. Search by Code")
+    print("5. Calculate Value Per Item")
+    print("6. Find Highest Quantity Shoe")
+    print("7. Exit")
 
     choice = int(input("Enter your choice: "))
 
     if choice == 1:
-        read_shoes_data()
-    elif choice == 2:
         capture_shoes()
-    elif choice == 3:
+    elif choice == 2:
         view_all()
-    elif choice == 4:
+    elif choice == 3:
         re_stock()
-    elif choice == 5:
+    elif choice == 4:
         code = input("Enter the shoe code to search: ")
         shoe = search_shoe(code)
         if shoe:
             print(shoe)
         else:
             print("Shoe not found.")
-    elif choice == 6:
+    elif choice == 5:
         value_per_item()
-    elif choice == 7:
+    elif choice == 6:
         highest_qty()
-    elif choice == 8:
+    elif choice == 7:
         break
     else:
         print("Invalid choice. Please try again.")
