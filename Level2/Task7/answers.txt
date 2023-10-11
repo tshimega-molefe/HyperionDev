@@ -1,0 +1,68 @@
+A protocol resembles a set of rules and conventions that devices and systems follow to communicate with each other. 
+
+It's essentially a standardized way for different parts of software products to understand and interact with each other. Just like in real life, where we have specific etiquettes and rules for different social situations, in software, protocols ensure that data can be transmitted and received correctly, no matter the devices or systems involved.
+
+HTTP (Hypertext Transfer Protocol) is a protocol that defines how web browsers and web servers should communicate to request and deliver web pages. Similarly, there are various other protocols like TCP/IP, SMTP (for email), and many more, each serving specific communication purposes.
+
+Protocols serve as the language that computers and devices speak, to ensure data is transmitted accurately and efficiently across networks.
+
+=================
+
+HTTP is built on top of the TCP (Transmission Control Protocol). TCP is one of the core protocols in the internet protocol suite (TCP/IP). 
+
+It provides reliable, connection-oriented communication, ensuring that data sent via HTTP or other protocols arrives intact and in the correct order at its destination. 
+
+HTTP uses TCP as its transport layer protocol to establish a connection, send and receive data between web clients (like browsers) and web servers.
+
+=================
+
+In HTTP, if a request is successful, the status code of the response will typically be in the 200 range. 
+
+The most common status code for a successful request is HTTP {status: 200} "OK". This status code indicates that the request has been processed successfully, and the server is providing the expected response.
+
+There are other status codes in the 200 range that can provide more specific information about the success of the request, such as:
+
+HTTP 201 Created: Indicates that the request has resulted in the creation of a new resource.
+
+HTTP 204 No Content: Suggests that the request was successful, but there is no response body to be sent.
+
+These status codes help both clients and servers understand the outcome of the request and take appropriate actions.
+
+=================
+
+A stateless protocol is a communication protocol that treats each request from a client to a server as an independent and isolated transaction. 
+
+The protocol doesn't retain any information about previous requests or the current state of the client. Each request is processed without any knowledge of what happened before.
+
+HTTP, which you might be familiar with in the context of web development, is a prime example of a stateless protocol. 
+
+When a web server receives an HTTP request, it processes that request without any memory of previous requests from the same client. 
+
+Meaning, if you want to maintain user sessions or remember past interactions, you need to implement mechanisms like cookies or session tokens (JWT's) to keep track of the client's state.
+
+Stateless protocols have the advantage of simplicity and scalability because each request can be processed independently. However, they require additional work to manage and maintain the state of user sessions if needed, as the protocol itself doesn't handle this.
+
+=================
+
+The valid MIME types are:
+
+image/jpeg: This MIME type is used for JPEG image files.
+
+text/javascript: This MIME type is used for JavaScript files.
+
+image/psd: This MIME type is used for Adobe Photoshop Document (PSD) files.
+
+The following are not valid MIME types:
+
+text/time: "time" is not a recognized MIME type.
+
+text/jsx: While JSX is used in web development, it's typically served as JavaScript with the MIME type text/javascript. There is no specific MIME type for JSX.
+
+text/calendar: There's no specific MIME type for calendar data.
+
+=================
+
+
+When a server does not allow you permission to request a specific resource, you can typically expect to receive an HTTP 403 Forbidden status code along with an appropriate message in the response. This status code indicates that the server understands the request but refuses to fulfill it due to insufficient or invalid permissions from the client.
+
+The server might provide additional information in the response message to explain why the request was forbidden or what specific permissions are lacking. This status code is commonly used to indicate that the client does not have the necessary credentials or authorization to access the requested resource.
