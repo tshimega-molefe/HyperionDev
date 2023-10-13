@@ -1,4 +1,4 @@
-A protocol resembles a set of rules and conventions that devices and systems follow to communicate with each other. 
+A protocol resembles a set of rules and conventions that devices and systems follow to communicate with each other.
 
 It's essentially a standardized way for different parts of software products to understand and interact with each other. Just like in real life, where we have specific etiquettes and rules for different social situations, in software, protocols ensure that data can be transmitted and received correctly, no matter the devices or systems involved.
 
@@ -8,11 +8,29 @@ Protocols serve as the language that computers and devices speak, to ensure data
 
 =================
 
-HTTP is built on top of the TCP (Transmission Control Protocol). TCP is one of the core protocols in the internet protocol suite (TCP/IP). 
+As a request-response protocol, HTTP gives users a way to interact with web resources such as HTML files by transmitting hypertext messages between clients and servers. 
 
-It provides reliable, connection-oriented communication, ensuring that data sent via HTTP or other protocols arrives intact and in the correct order at its destination. 
+HTTP clients generally use Transmission Control Protocol (TCP) connections to communicate with servers.
 
-HTTP uses TCP as its transport layer protocol to establish a connection, send and receive data between web clients (like browsers) and web servers.
+HTTP utilizes specific request methods in order to perform various tasks. All HTTP servers use the GET and HEAD methods, but not all support the rest of these request methods:
+
+GET requests a specific resource in its entirety
+
+HEAD requests a specific resource without the body content
+
+POST adds content, messages, or data to a new page under an existing web resource
+
+PUT directly modifies an existing web resource or creates a new URI if need be
+
+DELETE gets rid of a specified resource
+
+TRACE shows users any changes or additions made to a web resource
+
+OPTIONS shows users which HTTP methods are available for a specific URL
+
+CONNECT converts the request connection to a transparent TCP/IP tunnel
+
+PATCH partially modifies a web resource
 
 =================
 
@@ -52,13 +70,14 @@ text/javascript: This MIME type is used for JavaScript files.
 
 image/psd: This MIME type is used for Adobe Photoshop Document (PSD) files.
 
+text/calendar: This MIME type is used for calendar data.
+
+
 The following are not valid MIME types:
 
 text/time: "time" is not a recognized MIME type.
 
 text/jsx: While JSX is used in web development, it's typically served as JavaScript with the MIME type text/javascript. There is no specific MIME type for JSX.
-
-text/calendar: There's no specific MIME type for calendar data.
 
 =================
 
