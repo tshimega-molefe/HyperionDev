@@ -1,0 +1,51 @@
+Normalization is a process used to efficiently organize and structure data in relational databases. The goal is to eliminate data redundancy and improve data integrity. This is achieved by breaking down a large table into smaller, related tables and establishing relationships between them.
+
+You divide a database into two or more tables and defining relationships between these tables using keys. The most common form of normalization is called the "normal forms," which are a set of rules that help ensure data integrity and minimize redundancy.
+
+There are different normal forms, including the First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), and so on. Each normal form has specific criteria that a table must meet to be considered normalized.
+
+The process of normalization helps in reducing data anomalies, such as insertion, update, or deletion anomalies, which can occur when data is duplicated across multiple rows. By breaking down data into smaller, related tables, you can maintain consistency and accuracy while saving storage space.
+
+Normalization is an important concept in database design, as it helps in creating efficient, maintainable, and reliable databases for various applications, including web and mobile applications.
+
+==============
+
+A table is considered to be in the First Normal Form (1NF) when it meets the following criteria:
+
+Atomic Values: Each column (attribute) in the table contains atomic (indivisible) values. Atomic values are values that cannot be further divided. This means that each cell in the table should hold a single value, not a set or a list of values.
+
+Unique Column Names: Each column in the table should have a unique name to distinguish it from other columns. Column names should be descriptive and not repeated within the same table.
+
+No Repeating Groups: There should be no repeating groups or arrays within a row. Each row in the table should contain a fixed number of columns, and there should be no arrays or lists of values that repeat within rows.
+
+Primary Key: The table should have a primary key that uniquely identifies each row. This primary key ensures that each row is distinct from all other rows in the table.
+
+==============
+
+A table is considered to be in the Second Normal Form (2NF) if it meets the criteria of being in the First Normal Form (1NF) and additionally satisfies the following conditions:
+
+It has a composite primary key, which means the primary key consists of two or more columns.
+All non-key attributes (columns) are fully functionally dependent on the entire primary key. In other words, there are no partial dependencies on the primary key.
+
+To put it simply, a table is in 2NF when:
+
+It is in 1NF, ensuring that all columns contain atomic values and have unique names.
+It has a primary key that is composed of multiple columns.
+
+All other non-key columns depend on the entire primary key, and there are no partial dependencies.
+
+==============
+
+A table is considered to be in the Third Normal Form (3NF) if it meets the criteria of being in the Second Normal Form (2NF) and additionally satisfies the following conditions:
+
+It is in 2NF, meaning it has a composite primary key, and all non-key attributes are fully functionally dependent on the entire primary key.
+
+There are no transitive dependencies, which means that non-key attributes are not dependent on other non-key attributes.
+
+In simpler terms, a table is in 3NF when:
+
+It is in 2NF, ensuring that it has a composite primary key, and all non-key attributes are fully functionally dependent on the entire primary key.
+
+There are no indirect or transitive dependencies between non-key columns. 
+
+If a non-key column depends on another non-key column, it should be removed and placed in a separate table.
