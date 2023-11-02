@@ -1,0 +1,73 @@
+1.
+
+Web 1.0 (The Static Web):
+
+In the early days of the internet, websites were primarily static, with limited user interaction.
+Information was presented in a read-only format, and it was often unstructured.
+Search engines were basic, and there was no semantic understanding of web content.
+
+Web 2.0 (The Social Web):
+
+Web 2.0 introduced user-generated content, social networking, and interactive web applications.
+It emphasized collaboration, user participation, and dynamic content.
+Platforms like Facebook, Twitter, and YouTube are typical examples of Web 2.0.
+
+Web 3.0 (The Semantic Web):
+
+Web 3.0 is characterized by a focus on machine understanding and meaningful connections between data and content.
+It aims to provide a more intelligent and context-aware web experience.
+Semantic technologies, like RDF (Resource Description Framework) and ontologies, enable data to be linked and processed in a more structured and meaningful way.
+Web 3.0 envisions a web where machines can understand the content and context of information, making it easier to find, share, and use data.
+The key difference between Web 3.0 and its predecessors is the emphasis on data interoperability, linked data, and the use of semantic technologies to enable a more intelligent and context-aware web. This can have significant implications for areas such as artificial intelligence, knowledge graphs, and advanced data processing.
+
+Web 3.0 projects involve data integration, semantic data modeling, or creating intelligent applications that leverage machine understanding of web content.
+
+2.
+
+Front-end (Client-Side):
+
+User Interface: Front-end handles the user interface and presentation of the application.
+
+Technologies: Typically uses HTML, CSS, and JavaScript for web development.
+
+User Interaction: Deals with user interaction, making the application visually appealing and responsive.
+
+Runs in the User's Browser: Front-end code executes in the user's web browser/mobile or desktop application.
+
+Security: Focuses on client-side security to protect against common web vulnerabilities.
+
+Back-end (Server-Side):
+
+Server Logic: Back-end manages server-side logic, data storage, and application functionality.
+
+Technologies: Uses various languages and frameworks like Node.js, Python, Django, Ruby on Rails, etc.
+
+Database Interaction: Connects to databases, processes data, and handles business logic.
+
+Scalability: Ensures the application can handle a large number of users and requests.
+
+Security: Focuses on server-side security, including data protection and access control.
+
+3.
+
+URL Entry: You start by entering the URL (Uniform Resource Locator) of the website you want to visit in your browser's address bar. For example, "https://www.deeznuts.com."
+
+DNS Resolution: The browser sends a request to a Domain Name System (DNS) server to resolve the human-readable URL into an IP address, which is a unique identifier for the website's server. This step is crucial because it tells the browser where to find the website on the internet.
+
+TCP Connection: Once the browser knows the IP address, it establishes a Transmission Control Protocol (TCP) connection to the web server hosting the requested website. This connection is made through port 80 (HTTP) or 443 (HTTPS).
+
+HTTP Request: After the connection is established, the browser sends an HTTP (Hypertext Transfer Protocol) request to the server. This request typically includes information about the specific page or resource you want, as well as other data like user agent information.
+
+Server Processing: The web server receives the request and processes it. It may fetch data from databases, run server-side code, and assemble the necessary resources to create the web page.
+
+HTTP Response: The server generates an HTTP response, which includes the requested web page's HTML, along with other assets like CSS, JavaScript, and images. It sends this response back to the browser.
+
+Rendering: The browser receives the response and starts rendering the web page. It parses the HTML, loads associated assets, and displays the page according to the specified layout and styles.
+
+User Interaction: You can interact with the page through forms, links, and JavaScript-based actions. Your input triggers further requests and interactions between the browser and the server.
+
+Page Display: Finally, the fully rendered web page is displayed in your browser, and you can view and interact with the content. This page may continue to fetch additional resources as you navigate or interact with it.
+
+
+
+
