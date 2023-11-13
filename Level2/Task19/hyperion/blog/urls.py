@@ -11,5 +11,5 @@ urlpatterns = [
             template_name="blog.html",
         ),
     ),
-    path("<int:pk>/,", DetailView.as_view(model=Post, template_name="post.html")),
+    path("<int:pk>/", DetailView.as_view(model=Post, template_name="post.html")),
 ]
