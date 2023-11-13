@@ -1,0 +1,15 @@
+<!-- blog/templates/blog/header.html -->
+
+{% extends 'base_generic.html' %} {% block header %}
+<h1>
+  {% block blog_title %}<a href="{% url 'blog:post_list' %}">My Blog</a>{%
+  endblock %}
+</h1>
+<nav>
+  <ul>
+    <li><a href="{% url 'blog:post_list' %}">Home</a></li>
+    <li><a href="{% url 'blog:about' %}">About</a></li>
+    <li><a href="{% url 'blog:contact' %}">Contact</a></li>
+  </ul>
+</nav>
+{% endblock %}
