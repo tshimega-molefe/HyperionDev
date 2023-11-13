@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Online Shopping</title>
+    <style>
+      .title {
+        margin-bottom: 50px;
+      }
+
+      .product {
+        margin-bottom: 50px;
+      }
+
+      .image-container {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 1.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="title">Online Shopping</h1>
+      <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-1.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Lamborghini SVJ</h2>
+            <p>Price: $390 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-2.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Pontiac '67</h2>
+            <p>Price: $90 900</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-3.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Lamborghini STO</h2>
+            <p>Price: $590 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-4.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Lamborghini Huracan</h2>
+            <p>Price: $199 990</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 5 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-5.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Lamborghini Huracan</h2>
+            <p>Price: $210 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 6 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-6.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Mom Mercedes</h2>
+            <p>Price: $40 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 7 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-7.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Hellcat</h2>
+            <p>Price: $60 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 8 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-8.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Mustang '65</h2>
+            <p>Price: $98 000</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 9 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-9.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>1/4 Porche Hoonigan</h2>
+            <p>Price: $990 890</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+        <!-- Product 10 -->
+        <div class="col-md-4">
+          <div class="product">
+            <div class="image-container">
+              <img
+                src="{% static './assets/car-10.jpg' %}"
+                alt="Car 1"
+                class="product-image img-fluid"
+              />
+            </div>
+            <h2>Scarlet Audi R8</h2>
+            <p>Price: $200 890</p>
+            <button class="btn btn-primary">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container-fluid bg-dark text-light p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Contact Details</h4>
+          <form>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter your contact details"
+              />
+            </div>
+            <button class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <img
+            src="./assets/icon.png"
+            width="40"
+            height="40"
+            alt="Company Logo"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
